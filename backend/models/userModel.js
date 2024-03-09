@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema({
         minLength:[8,"Password should have more than 4 characters"],
         select:false,
     },
+    role:{
+        type:String,
+        default:"student"
+    },
     resetPasswordToken:String,
     resetPasswordExpire:Date,
     organizedQuizzes: [{

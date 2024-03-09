@@ -1,0 +1,40 @@
+.accountBody{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* min-height: 100vh; */
+    
+}
+
+  .profile-container {
+     width: 600px; 
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  h1 {
+    color: #333;
+  }
+
+  .profile-info {
+    margin-top: 20px;
+  }
+
+  .info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .info-label {
+    font-weight: bold;
+    color: #555;
+  }
+
+  .info-value {
+    color: #333;
+  }

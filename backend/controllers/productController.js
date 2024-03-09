@@ -9,7 +9,7 @@ const User = require("../models/userModel");
 
 exports.createQuiz = catchAsyncErrors(async (req, res, next) => {
     const quiz = await Quiz.create(req.body);
-    console.log(req.user.id);
+    console.log("user s => ",req.user);
     const userId = req.user.id;
     const user = await User.findById(userId);
     user.organizedQuizzes.push(quiz);
@@ -44,11 +44,23 @@ exports.getAllQuizs = catchAsyncErrors(async (req, res) => {
 exports.getQuizDetails = catchAsyncErrors(async(req,res,next)=>{
     const quiz = await Quiz.findById(req.params.id);
     if(!quiz){
-        return next(new Errorhander("Product Not Found",404))
+      return next(new Errorhander("Product Not Found",404))
+  }
+    const rollNumber = req.query.rollNumber;
+    if (!rollNumber) {
+      return next(new Errorhander("Roll Number is required", 400));
     }
+
+    const enrolledStudent = quiz.enrolledStudents.find(student => student.rollNumber === rollNumber);
+
+    if (!enrolledStudent) {
+        return next(new Errorhander("Student not enrolled in the quiz", 404));
+    }
+    
     res.status(200).json({
         success:true,
-        quiz
+        quiz,
+        enrolledStudent
     })
 })
 

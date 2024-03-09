@@ -6,10 +6,10 @@ const sendToken = require("../utils/jwtToken")
 // Register
 
 exports.registerUser = catchAsyncErrors(async(req,res,next)=>{
-    const {name,email,password} = req.body;
+    const {name,email,password,role} = req.body;
 
     const user = await User.create({
-        name,email,password
+        name,email,password,role
     })
 
 
@@ -59,3 +59,16 @@ exports.logout = catchAsyncErrors(async(req,res,next)=>{
         message:"Logged Out"
     })
 })
+
+
+
+// Get User Detail
+exports.getUserDetails = catchAsyncErrors(async(req,res,next)=>{
+
+    const user = await User.findById(req.user.id);
+    res.status(200).json({
+        success:true,
+        user,
+    });
+
+});

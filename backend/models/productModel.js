@@ -4,24 +4,26 @@ const optionSchema = new mongoose.Schema({
     text: {
         type: String,
         required: true,
-    },
-    isCorrect: {
-        type: Boolean,
-        default: false,
-    },
+    }
+    
 });
 
 const questionSchema = new mongoose.Schema({
-    text: {
+    question: {
         type: String,
         required: true,
     },
     options: [optionSchema],
+    answer:{
+        type:String,
+        required:true
+    }
 });
 
 const studentSchema = new mongoose.Schema({
     rollNumber: {
         type: String,      
+        required:true
     },
     isEnrolled: {
         type: Boolean,
@@ -45,6 +47,7 @@ const quizSchema = new mongoose.Schema({
         type: [questionSchema],
         validate: {
             validator: function (questions) {
+                console.log("questions.length",questions.length);
                 return questions.length === this.totalQuestions;
             },
             message: "Number of questions must match totalQuestions",
@@ -62,8 +65,3 @@ const quizSchema = new mongoose.Schema({
 });
 
 module.exports = mongoose.model('Quiz', quizSchema);
-
-// module.exports = Quiz;
-
-
-// module.exports = mongoose.model("Product",productSchema)

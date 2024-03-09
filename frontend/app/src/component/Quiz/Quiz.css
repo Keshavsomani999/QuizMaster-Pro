@@ -1,0 +1,106 @@
+  
+  .quizCreate-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+
+    
+  .quizCreate-box {
+    position: relative;
+    width: 550px;
+    backdrop-filter: blur(25px);
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    padding: 7.5em 2.5em 4em 2.5em;
+    color: var(--second-color);
+    box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .quizCreate-header {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    padding: 12px;
+    width: fit-content;
+    height: 70px;
+    border-radius: 0 0 20px 20px;
+  }
+
+  .quizCreate-header span {
+    font-size: 25px;
+    color: var(--black-color);
+  }
+  
+  .quizCreate-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -30px;
+    width: 30px;
+    height: 30px;
+    border-top-right-radius: 50%;
+    background: transparent;
+    box-shadow: 15px 0 0 0 var(--primary-color);
+  }
+  
+  .quizCreate-header::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -30px;
+    width: 30px;
+    height: 30px;
+    border-top-left-radius: 50%;
+    background: transparent;
+    box-shadow: -15px 0 0 0 var(--primary-color); /* Removed space before --primary-color */
+  }
+
+ #quizForm .input_box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+  }
+
+
+    
+  #quizForm .input-field {
+    width: 100%;
+    height: 55px;
+    font-size: 16px;
+    background: transparent;
+    color: var(--second-color);
+    padding-inline: 20px 50px;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    outline: none;
+  }
+
+  #quizForm .input-field:focus ~ .label,
+  #quizForm .input-field:not(:valid):not(:placeholder-shown) + .label,
+  #quizForm .input-field:valid:not(:placeholder-shown) + .label {
+    position: absolute;
+    top: -10px;
+    left: 20px;
+    font-size: 14px;
+    background-color: var(--primary-color);
+    border-radius: 30px;
+    color: var(--black-color);
+    padding: 0 10px;
+  }
+
+  #quizForm .label {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    transition: 0.2s;
+  }
