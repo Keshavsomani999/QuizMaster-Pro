@@ -14,6 +14,7 @@ const Login = () => {
     const alert = useAlert();
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const [show, setShow] = useState(false)
     const {error,isLoading,isAuthenticated} = useSelector(state => state.user)
 
   const [loginData, setLoginData] = useState({
@@ -68,6 +69,9 @@ useEffect(() => {
 
 }, [error,isAuthenticated,navigate,dispatch])
 
+const passhide = () =>{
+  setShow(!show)
+}
 
   return (
     <Fragment>
@@ -97,7 +101,7 @@ useEffect(() => {
 
             <div class="input_box">
               <input
-                type="password"
+                type={show ? "text":"password"}
                 id="pass"
                 class="input-field"
                 name="password"
@@ -107,7 +111,10 @@ useEffect(() => {
               <label htmlFor="pass" class="label">
                 Password
               </label>
-              <i class="bx bx-lock-alt loginicon"></i>
+              
+              {show ? <i class="bx bx-show loginicon " onClick={passhide}></i>:<i class="bx bxs-hide loginicon" onClick={passhide}></i>}
+         
+              
             </div>
 
             <div class="remember-forgot">

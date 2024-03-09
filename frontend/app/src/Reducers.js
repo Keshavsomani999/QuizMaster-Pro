@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const quizState = {
-  isQuiz:false,
+  isQuiz:false,// change it to false
   quiz:{},
   isLoading: false,
   error:null

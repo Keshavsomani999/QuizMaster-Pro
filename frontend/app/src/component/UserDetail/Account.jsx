@@ -11,7 +11,7 @@ const Account = () => {
 
   return (
     <>
-    {isLoading ? <Loader /> : <>
+    {user && isLoading ? <Loader /> : <>
     <div className='accountBody'>
     <div class="profile-container">
     <h1>Profile Details</h1>

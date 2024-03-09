@@ -1,4 +1,3 @@
-  
   .quizCreate-wrapper {
     width: 100%;
     display: flex;
@@ -8,7 +7,7 @@
     background-color: rgba(0, 0, 0, 0.2);
   }
 
-    
+
   .quizCreate-box {
     position: relative;
     width: 550px;
@@ -39,7 +38,7 @@
     font-size: 25px;
     color: var(--black-color);
   }
-  
+
   .quizCreate-header::before {
     content: "";
     position: absolute;
@@ -51,7 +50,7 @@
     background: transparent;
     box-shadow: 15px 0 0 0 var(--primary-color);
   }
-  
+
   .quizCreate-header::after {
     content: "";
     position: absolute;
@@ -61,10 +60,11 @@
     height: 30px;
     border-top-left-radius: 50%;
     background: transparent;
-    box-shadow: -15px 0 0 0 var(--primary-color); /* Removed space before --primary-color */
+    box-shadow: -15px 0 0 0 var(--primary-color);
+    /* Removed space before --primary-color */
   }
 
- #quizForm .input_box {
+  #quizForm .input_box {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -72,7 +72,7 @@
   }
 
 
-    
+
   #quizForm .input-field {
     width: 100%;
     height: 55px;
@@ -85,9 +85,9 @@
     outline: none;
   }
 
-  #quizForm .input-field:focus ~ .label,
-  #quizForm .input-field:not(:valid):not(:placeholder-shown) + .label,
-  #quizForm .input-field:valid:not(:placeholder-shown) + .label {
+  #quizForm .input-field:focus~.label,
+  #quizForm .input-field:not(:valid):not(:placeholder-shown)+.label,
+  #quizForm .input-field:valid:not(:placeholder-shown)+.label {
     position: absolute;
     top: -10px;
     left: 20px;
@@ -103,4 +103,108 @@
     top: 15px;
     left: 20px;
     transition: 0.2s;
+  }
+
+
+  .RealQuiz {
+    background-color: white;
+    height: 100vh;
+    display: flex;
+    
+  
+  }
+
+  .RealQuiz  .header {
+    background-color: #0274d8;
+  
+    position: relative;
+    align-items: center;
+    padding: 10px;
+    width: 250px;
+  }
+
+
+  .RealQuiz  .header h2 {
+    flex: 1;
+  }
+
+
+  .RealQuiz  .header p {
+    margin-right: 5px;
+  }
+
+ .RealQuiz  .list{
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+ .RealQuiz  .list button{
+  margin-bottom: 7px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+  .RealQuiz  .QA{
+  margin: 20px 0 0 30px;
+ }
+
+   .RealQuiz  .Question {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+   .RealQuiz .answere {
+    margin-top: 20px;
+    width: 100vh;
+  }
+
+   .RealQuiz .answere div {
+    width: 30%;
+    border: 1px solid #83b9e9;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #eff7fe;
+  }
+
+   .RealQuiz .answere div label {
+    margin-left: 5px;
+  }
+
+
+  .previous, .next,.submit{
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    margin: 10px;
+    width: 80px;
+    border: none;
+    font-weight: 500;
+  }
+
+  .previous{
+    background-color: #96d99d;
+  }
+  .next{ 
+    background-color: #52b757;
+    right: 0;
+  }
+.submit{
+  background-color: #52b757;
+  right: 0;
+}
+  .time{
+    position: absolute;
+    background-color: #0274d8;
+    right: 0.5%;
+    top: 3%;
+    padding: 10px;
+  }
+
+  .disable {
+    /* Add your disabled button styles here */
+    background-color: #dddddd;
+    color: #888888;
+    cursor: not-allowed;
   }
