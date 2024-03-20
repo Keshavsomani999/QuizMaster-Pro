@@ -25,6 +25,8 @@ export const userReducer = createReducer(initialState, (builder) => {
       state.isAuthenticated = false;
       state.isLoading = true;
     })
+ 
+
     .addCase('login_Success', (state, action) => {
       
       state.isAuthenticated = true;
@@ -79,6 +81,12 @@ export const QuizReducer = createReducer(quizState, (builder) => {
       state.isQuiz = true;
       state.quiz = action.payload;
     })
+    .addCase('Quiz_End', (state) => {
+      state.isLoading = false;
+      state.isQuiz = false;
+      state.quiz = {};
+    })
+    
     .addCase('createQuiz_Fail',(state,action)=>{
       return {
           ...state,        
@@ -93,3 +101,4 @@ export const QuizReducer = createReducer(quizState, (builder) => {
       }
   })
 });
+

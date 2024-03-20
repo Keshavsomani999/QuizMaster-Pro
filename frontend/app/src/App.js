@@ -10,7 +10,9 @@ import Account from './component/UserDetail/Account';
 import Navbar from './component/Navbar/Navbar';
 import CreateQuiz from './component/Quiz/CreateQuiz';
 import Quiz from './component/Quiz/Quiz';
-
+import TeacherList from './component/Home/TeacherList';
+import ProtectedRoute from './component/Route/ProtectedRoute';
+import EditQuiz from './component/Quiz/EditQuiz';
 
 function App() {
   
@@ -28,7 +30,7 @@ function App() {
 
       dispatch({
         type:"Load_User_Success",
-        payload:data.user
+        payload:data.userDetails.user
       })
 
     }
@@ -43,23 +45,27 @@ function App() {
 
   useEffect(() => {
     loadUser()
-    
+   
   }, [])
   
 
   return (
+    <div className={isAuthenticated && !isQuiz ? "master" : ""}    >
     <Router>
       {isAuthenticated && !isQuiz && <Navbar />}
       <Routes>
         <Route path='/' element={<Login />}/>
         <Route path='/signup' element={<Signup />}/>
-        <Route path='/home' element={user && user.role === "student" ? <Home />: <CreateQuiz />}/> 
-        <Route path='/account' element={<Account />}/> 
-        <Route path='/create' element={<CreateQuiz />}/> 
+        <Route path='/home' element={user && user.role === "student" ? <TeacherList />: <CreateQuiz />}/> 
+        <Route path='/account' element={<ProtectedRoute component={Account}/>}/> 
+        <Route path='/create' element={<ProtectedRoute  component={CreateQuiz}/>}/>  
+        <Route path='/edit' element={<ProtectedRoute  component={EditQuiz}/>}/>  
         <Route path='/quiz' element={<Quiz />}/> 
+        <Route path='/startQuiz' element={<Home />}/> 
         
       </Routes>
     </Router>
+    </div>
   );
 }
 

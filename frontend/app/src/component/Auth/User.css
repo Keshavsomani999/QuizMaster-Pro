@@ -12,12 +12,16 @@
   }
   
   .loginbody {
-    background-image: url("https://i.pinimg.com/736x/db/34/d4/db34d40b271fb59477621550bf73ea0b.jpg");
+
+    /* margin: auto; */
+    display: grid;
+    grid-template-columns:35% 65% ;
+    /* background-image: url("https://i.pinimg.com/736x/db/34/d4/db34d40b271fb59477621550bf73ea0b.jpg");
 
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    background-attachment: fixed;
+    background-attachment: fixed; */
   }
   
   a {
@@ -28,8 +32,65 @@
   a:hover {
     text-decoration: underline;
   }
+
+
+  .animated-text {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+    display: inline-block;
+  }
   
+  .highlight {
+    color: #FFA500; /* orange color */
+    font-weight: 700;
+  }
+  
+  /* Animation */
+  @keyframes slideIn {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .animated-text {
+    animation: slideIn 1s ease-in-out forwards;
+  }
+  .loginText{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    height: 100vh;
+    width: 100%;
+    background-image: radial-gradient(circle at 29% 55%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 4%,transparent 4%, transparent 44%,transparent 44%, transparent 100%),radial-gradient(circle at 85% 89%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 51%,transparent 51%, transparent 52%,transparent 52%, transparent 100%),radial-gradient(circle at 6% 90%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 53%,transparent 53%, transparent 64%,transparent 64%, transparent 100%),radial-gradient(circle at 35% 75%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 6%,transparent 6%, transparent 98%,transparent 98%, transparent 100%),radial-gradient(circle at 56% 75%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 16%,transparent 16%, transparent 23%,transparent 23%, transparent 100%),radial-gradient(circle at 42% 0%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 3%,transparent 3%, transparent 26%,transparent 26%, transparent 100%),radial-gradient(circle at 29% 28%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 51%,transparent 51%, transparent 75%,transparent 75%, transparent 100%),radial-gradient(circle at 77% 21%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 35%,transparent 35%, transparent 55%,transparent 55%, transparent 100%),radial-gradient(circle at 65% 91%, hsla(329,0%,99%,0.05) 0%, hsla(329,0%,99%,0.05) 46%,transparent 46%, transparent 76%,transparent 76%, transparent 100%),linear-gradient(45deg, rgb(83, 91, 235),rgb(76, 11, 174));
+    max-width: 100%;
+    max-height: 100vh;
+  
+  
+  }
+  
+
+
+.loginText div span{
+  font-weight: bold;
+}
+
+.loginText div{
+  line-height: 2;
+  margin-top: 10px;
+  
+  animation: slideIn 1s ease-in-out forwards;
+}
+
   .wrapper {
+    padding: 20px;
     width: 100%;
     display: flex;
     justify-content: center;

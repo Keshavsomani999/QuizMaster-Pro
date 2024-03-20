@@ -11,14 +11,17 @@ const Signup = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const {error,isLoading,isAuthenticated} = useSelector(state => state.user)
-
+    const [show, setShow] = useState(false)
   const [signupData, setSignupData] = useState({
     name: "",
     email: "",
-    role:"",
+    role:"teacher",
     password: "",
+    rollnumber: "",
   });
-
+  const passhide = () =>{
+    setShow(!show)
+  }
   const signupChange = (e) => {
     setSignupData({ ...signupData, [e.target.name]: e.target.value });
   };
@@ -34,7 +37,7 @@ const Signup = () => {
         headers: { "Content-Type": "application/json" },
         withCredentials: true,  // Add this line
       };
-
+      console.log(signupData);
       const { data } =  await axios
         .post("http://localhost:4000/api/v1/register", signupData, config)
         dispatch({
@@ -97,8 +100,10 @@ const Signup = () => {
             </div>
             <div class="input_box">
             <select id="myDropdown" onChange={signupChange} class="input-field" name="role">
+            <option value="teacher" >Teacher</option>
               <option value="student" >Student</option>
-              <option value="teacher" >Teacher</option>
+              
+             
         </select>
               
               <label for="role" class="label">
@@ -106,9 +111,26 @@ const Signup = () => {
               </label>
               <i class="bx bx-chevron-down loginicon"></i>
             </div>
+
+            {signupData.role === "student" && (  
+              <div className="input_box">
+                <input
+                  type="text"
+                  id="rollnumber"
+                  className="input-field"
+                  name="rollnumber"
+                  onChange={signupChange}
+                  required={signupData.role === "student"}
+                />
+                <label htmlFor="rollnumber" className="label">
+                  Roll Number
+                </label>
+                <i className="bx bx-user loginicon"></i>
+              </div>
+            )}
             <div class="input_box">
               <input
-                type="password"
+                type={show ? "text":"password"}
                 id="pass"
                 class="input-field"
                 name="password"
@@ -118,7 +140,7 @@ const Signup = () => {
               <label for="pass" class="label">
                 Password
               </label>
-              <i class="bx bx-lock-alt loginicon"></i>
+              {show ? <i class="bx bx-show loginicon " onClick={passhide}></i>:<i class="bx bxs-hide loginicon" onClick={passhide}></i>}
             </div>
 
             <div class="remember-forgot">
@@ -143,6 +165,41 @@ const Signup = () => {
           </div>
         </div>
       </div>
+      <div className="loginText">
+              <h1 class="animated-text">
+                Welcome to <span class="highlight">Quiz</span> Master
+              </h1>
+              <div>
+                <span>Diverse Quiz Categories:</span> Delve into a plethora of
+                quiz categories spanning from history, science, and literature
+                to pop culture, sports, and beyond. With an extensive range of
+                topics, there's always a quiz tailored to your interests.
+                <br />
+                <br />
+                <span>Engaging Content:</span> Immerse yourself in
+                thought-provoking questions crafted to stimulate your intellect
+                and ignite your passion for learning. Each quiz is meticulously
+                curated to ensure an enriching and enjoyable experience.
+                <br />
+                <br />
+                <span>Track Your Progress:</span> Monitor your quiz performance
+                and track your progress over time. Keep tabs on your scores,
+                achievements, and areas for improvement as you strive for
+                mastery in your favorite topics.
+                <br />
+                <br />
+                <span>Interactive Experience:</span> Experience an interactive
+                platform designed for seamless navigation and user-friendly
+                interaction. Our intuitive interface makes it easy to browse
+                quizzes, answer questions, and explore new topics effortlessly.
+                <br />
+                <br />
+                <span>Community Engagement:</span> Connect with like-minded individuals from
+                around the globe and engage in lively discussions about your
+                favorite quizzes. Share insights, exchange trivia knowledge, and
+                build lasting connections within our vibrant community.
+              </div>
+            </div>
     </div>
   );
 };

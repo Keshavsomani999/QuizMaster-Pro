@@ -2,7 +2,7 @@ import React, { useState,useEffect } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from 'react-alert'
-import { useNavigate } from "react-router-dom"
+import { useNavigate,useLocation } from "react-router-dom"
 import Loader from "./Loader/Loader";
 
 const Home = () => {
@@ -10,13 +10,19 @@ const Home = () => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const navigate = useNavigate();
+  const location = useLocation();
+  const quizId = location.state ? location.state.quizId : null;
+
+  console.log("quiz id" ,quizId);
 
   const {error,isLoading} = useSelector(state => state.quiz)
+  const {user} = useSelector(state => state.user)
 
 
   const [start, setStart] = useState({
-    id: "",
-    rollNumber: "",
+    id: quizId,
+    name:"",
+    rollNumber: user.rollnumber,
   });
 
   const startChange = (e) => {
@@ -35,7 +41,7 @@ const Home = () => {
       };
 
       const { data } = await axios.get(
-        `http://localhost:4000/api/v1/product/${start.id}?rollNumber=${start.rollNumber}`,
+        `http://localhost:4000/api/v1/product/${quizId}?rollNumber=${start.rollNumber}`,
         config
       );
       console.log("data",data);
@@ -81,10 +87,26 @@ const Home = () => {
               class="input-field"
               name="id"
               onChange={startChange}
+              value={start.id}
               required
+              disabled
             />
             <label htmlFor="id" class="label">
               ID:
+            </label>
+          </div>
+          <div className="input_box">
+            <input
+              type="text"
+              id="name"
+              class="input-field"
+              name="name"
+              onChange={startChange}
+              
+              required
+            />
+            <label htmlFor="name" class="label">
+              Name:
             </label>
           </div>
           <div className="input_box">
@@ -94,7 +116,9 @@ const Home = () => {
               name="rollNumber"
               class="input-field"
               onChange={startChange}
+              value={start.rollNumber}
               required
+              disabled
             />
             <label htmlFor="rollNumber" class="label">
               Roll Number:

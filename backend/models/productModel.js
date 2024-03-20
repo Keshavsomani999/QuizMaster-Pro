@@ -22,12 +22,12 @@ const questionSchema = new mongoose.Schema({
 
 const studentSchema = new mongoose.Schema({
     rollNumber: {
-        type: String,      
+        type:String,      
         required:true
     },
     isEnrolled: {
         type: Boolean,
-        default: true,
+        default: false,
     },
     score:{
         type:Number,
@@ -47,11 +47,16 @@ const quizSchema = new mongoose.Schema({
         type: [questionSchema],
         validate: {
             validator: function (questions) {
-                console.log("questions.length",questions.length);
+                
                 return questions.length === this.totalQuestions;
             },
             message: "Number of questions must match totalQuestions",
         },
+    },
+    user:{
+        type:mongoose.Schema.ObjectId,
+        ref:"User",
+        required:true,
     },
     enrolledStudents: [studentSchema],
     createdAt: {

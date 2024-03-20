@@ -27,6 +27,12 @@ const userSchema = new mongoose.Schema({
         type:String,
         default:"student"
     },
+    rollnumber: {
+        type: String,
+        required: function () {
+          return this.role === "student";
+        },
+      },
     resetPasswordToken:String,
     resetPasswordExpire:Date,
     organizedQuizzes: [{

@@ -1,16 +1,26 @@
 body {
   margin: 0;
+ 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* background-color: black; */
-  background-image: url("https://i.pinimg.com/736x/db/34/d4/db34d40b271fb59477621550bf73ea0b.jpg");
+
+  background-image: linear-gradient(45deg, rgb(2, 6, 1) 0%, rgb(2, 6, 1) 14.286%,rgb(8, 29, 31) 14.286%, rgb(8, 29, 31) 28.572%,rgb(13, 52, 61) 28.572%, rgb(13, 52, 61) 42.858%,rgb(19, 75, 92) 42.858%, rgb(19, 75, 92) 57.144%,rgb(25, 98, 122) 57.144%, rgb(25, 98, 122) 71.43%,rgb(30, 121, 152) 71.43%, rgb(30, 121, 152) 85.716%,rgb(36, 144, 182) 85.716%, rgb(36, 144, 182) 100.002%);
+  
+  /* background-image: url("https://i.pinimg.com/736x/db/34/d4/db34d40b271fb59477621550bf73ea0b.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: fixed; */
+}
+
+.master{
+  display: grid;
+  grid-template-columns: 5.8% 92.2%;
+  height: 100vh;
 }
 
 code {
