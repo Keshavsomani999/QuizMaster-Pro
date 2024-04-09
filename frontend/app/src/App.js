@@ -13,6 +13,7 @@ import Quiz from './component/Quiz/Quiz';
 import TeacherList from './component/Home/TeacherList';
 import ProtectedRoute from './component/Route/ProtectedRoute';
 import EditQuiz from './component/Quiz/EditQuiz';
+import CameraCapture from './component/Camera/CameraCapture';
 
 function App() {
   
@@ -59,9 +60,10 @@ function App() {
         <Route path='/home' element={user && user.role === "student" ? <TeacherList />: <CreateQuiz />}/> 
         <Route path='/account' element={<ProtectedRoute component={Account}/>}/> 
         <Route path='/create' element={<ProtectedRoute  component={CreateQuiz}/>}/>  
-        <Route path='/edit' element={<ProtectedRoute  component={EditQuiz}/>}/>  
+        <Route path='/edit/:quizId' element={<ProtectedRoute  component={EditQuiz}/>}/>  
         <Route path='/quiz' element={<Quiz />}/> 
         <Route path='/startQuiz' element={<Home />}/> 
+        <Route path='/camera' element={<CameraCapture />}/> 
         
       </Routes>
     </Router>

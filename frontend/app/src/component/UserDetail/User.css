@@ -1,20 +1,40 @@
-.accountBody {
+.accountBody, .EditQuizBody {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   /* min-height: 100vh; */
-
+  position: relative;
+  margin: auto;
+}
+.accountBody {
+  width: 100vh;
+  height: fit-content;
+}
+.EditQuizBody{
+  width: 100%;
+  height: 100vh;
 }
 
-.profile-container {
+.EditQuiz-container {
+  height: 100vh;
+}
+.profile-container, .EditQuiz-container {
   width: 100%;
-  height: 100%;
-  margin: 50px auto;
   background-image: linear-gradient(135deg, rgba(244, 244, 244,0.07) 0%, rgba(244, 244, 244,0.07) 12.5%,rgba(211, 211, 211,0.07) 12.5%, rgba(211, 211, 211,0.07) 25%,rgba(178, 178, 178,0.07) 25%, rgba(178, 178, 178,0.07) 37.5%,rgba(145, 145, 145,0.07) 37.5%, rgba(145, 145, 145,0.07) 50%,rgba(113, 113, 113,0.07) 50%, rgba(113, 113, 113,0.07) 62.5%,rgba(80, 80, 80,0.07) 62.5%, rgba(80, 80, 80,0.07) 75%,rgba(47, 47, 47,0.07) 75%, rgba(47, 47, 47,0.07) 87.5%,rgba(14, 14, 14,0.07) 87.5%, rgba(14, 14, 14,0.07) 100%),linear-gradient(45deg, rgba(236, 236, 236,0.07) 0%, rgba(236, 236, 236,0.07) 12.5%,rgba(210, 210, 210,0.07) 12.5%, rgba(210, 210, 210,0.07) 25%,rgba(183, 183, 183,0.07) 25%, rgba(183, 183, 183,0.07) 37.5%,rgba(157, 157, 157,0.07) 37.5%, rgba(157, 157, 157,0.07) 50%,rgba(130, 130, 130,0.07) 50%, rgba(130, 130, 130,0.07) 62.5%,rgba(104, 104, 104,0.07) 62.5%, rgba(104, 104, 104,0.07) 75%,rgba(77, 77, 77,0.07) 75%, rgba(77, 77, 77,0.07) 87.5%,rgba(51, 51, 51,0.07) 87.5%, rgba(51, 51, 51,0.07) 100%),linear-gradient(90deg, #ffffff,#ffffff);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container > form >div{
+  
+  margin-left: auto
+}
+
+.profile-container  >form > span > i{
+  font-size: 30px;
+  margin-left: auto;
 }
 
 h1 {
@@ -22,29 +42,37 @@ h1 {
   color: #333;
 }
 
-
 .info {
   border: 2px solid #40a7ff;
   padding: 10px;
-  width: 100%;
+  width: 100%; /* Set fixed width */
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* Set direction to row */
   align-items: center;
   justify-content: space-between;
-  margin: 3px; /* Add margin bottom to create space */
+  margin: 3px;
+}
+
+
+.info label,
+.info input,
+.info select {
+  flex: 1; /* Make children take up equal space */
+}
+
+.info input,select{
+  padding: 10px;
+  width: auto;
 }
 
 
 .NE {
   display: flex;
   margin-top: 10px;
-
+  /* width: fit-content; */
 }
 
-.info input,select {
-  padding: 10px;
-  width: 85%;
-}
+
 
 .info select option{
   background-color: #fff;
@@ -53,6 +81,8 @@ h1 {
 .QuizDetailContainer {
   margin: 10px 3px;
   position: relative;
+  overflow: auto;
+  max-height: 300px;
 }
 
 .QuizDetail {
@@ -65,15 +95,190 @@ h1 {
 }
 
 .QuizDetail .icon{
+  display: flex;
   font-size: 30px;
   cursor: pointer;
+  height: 100%;
   margin-right: 5px;
   color: #043c6c;
 }
 
-.QuizDetail .icon .iconEdit{
-  margin-right: 5px;
+.QuizDetail .icon  > *{
+  margin-right: 10px;
+}
+
+.QuizDetail .icon .Details{
+  padding: 5px;
+  border: none;
+  background-color: #40a7ff;
+  border-radius: 3px;
+  margin: auto;
+  cursor: pointer;
+
 }
 .QuizDetail .icon .iconEdit:hover,.iconDelete:hover{
   color: #40a7ff;
+}
+
+.QuestionDetailContainer{
+  margin: 10px 3px;
+  position: relative;
+  overflow: auto;
+  max-height: 400px;
+}
+
+.QuestionDetail{
+  border: 1px solid #40a7ff;
+  margin-top: 5px;
+  padding: 5px;
+ 
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.options-container {
+  display: flex;
+  margin-top: 10px;
+}
+
+.options-column {
+  flex: 1;
+}
+.options-column i {
+  font-size: 30px;
+  color: #000000;
+}
+
+.options-column .correct{
+  color: rgb(62, 16, 213);
+}
+
+.option {
+  display: flex;
+  
+  align-items: center;
+  margin-bottom: 10px; /* Adjust as needed */
+}
+
+
+.enrolledStudent{
+  width: 100%;
+  height: 50px;
+  background-color: #40a7ff;
+  cursor: pointer;
+  border-radius: 50px;
+  margin-top: 30px;
+}
+
+
+.Modal{
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.ModalHeader{
+  background-color: #043c6c;
+  color: white;
+  display: flex;
+  padding: 10px;
+}
+
+
+.ModalHeader .cancel{
+  margin-left: auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.table-container {
+  overflow-x: auto;
+  max-height: 76vh; /* Adjust this value as needed */
+}
+
+
+/* Style for the table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd; /* Add border */
+  justify-content: center;
+  align-items: center;
+  
+}
+
+/* Style for table header */
+th {
+  padding: 8px;
+  text-align: left;
+  background-color: #f2f2f2; /* Gray background color */
+  border-bottom: 1px solid #ddd; /* Add bottom border */
+}
+
+#myTable thead {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2;
+}
+
+/* Style for table cells */
+td {
+  padding: 8px;
+  background-color: #ddd;
+  border-bottom: 1px solid #ddd; /* Add bottom border */
+}
+
+/* Style for the border between columns */
+th:first-child,
+td:first-child {
+  border-right: 1px solid #ddd;
+}
+
+
+
+/* Style for table header and cells in the first row */
+thead tr:first-child th,
+tbody tr:first-child td {
+  border-top: 1px solid #ddd; /* Add top border */
+}
+
+/* Style for table header and cells in the last row */
+thead tr:last-child th,
+tbody tr:last-child td {
+  border-bottom: none; /* Remove bottom border for the last row */
+}
+
+
+.AddEnrollstudentIcon{
+  font-size: 30px;
+  margin: auto;
+  display: ruby-text;
+  color: #fff;
+  margin-top: 5px;
+}
+
+.addEnrollStudentContainer{
+  display: flex;
+  flex-direction: row;
+}
+.addEnrollStudentContainer input{
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background-color: #ddd;
+}
+
+.submitButton{
+  background: none;
+  border: none;
+  font-size: 30px;
+  color: #fff;
+  margin-top: 5px;
 }

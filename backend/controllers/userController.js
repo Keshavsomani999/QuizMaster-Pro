@@ -83,8 +83,7 @@ exports.getUserDetails = catchAsyncErrors(async (req, res, next) => {
 
 exports.getAllTeachers = catchAsyncErrors(async (req, res, next) => {
   const loggedInStudentRollNumber = req.user.rollnumber; // Assuming you get the roll number from the request
-  console.log(loggedInStudentRollNumber);
-
+  
   const teachers = await User.aggregate([
     {
       $match: {
@@ -127,5 +126,69 @@ exports.getAllTeachers = catchAsyncErrors(async (req, res, next) => {
   res.status(200).json({
     success: true,
     teachers,
+  });
+});
+
+exports.getQuizScore = catchAsyncErrors(async (req, res, next) => {
+  const loggedInStudentRollNumber = req.user.rollnumber;
+
+
+  const quizzesWithScore = await User.aggregate([
+    {
+      $match: {
+        role: "teacher", // Assuming teachers are the ones who create quizzes
+      },
+    },
+    {
+      $lookup: {
+        from: "quizzes",
+        localField: "_id",
+        foreignField: "user",
+        as: "quizzes",
+      },
+    },
+    {
+      $unwind: "$quizzes",
+    },
+    {
+      $unwind: "$quizzes.enrolledStudents",
+    },
+    {
+      $match: {
+        "quizzes.enrolledStudents.rollNumber": loggedInStudentRollNumber,
+        "quizzes.enrolledStudents.score": { $exists: true }, // Filter quizzes where the student has a score
+      },
+    },
+    {
+      $group: {
+        _id: "$quizzes._id", // Group by quiz ID
+        title: { $first: "$quizzes.title" }, // Assuming you want to retrieve the quiz title
+        score: { $max: "$quizzes.enrolledStudents.score" }, // Retrieve the max score for each quiz
+      },
+    },
+  ]);
+
+
+  res.status(200).json({
+    success: true,
+    quizzesWithScore,
+  });
+});
+
+exports.updateUser = catchAsyncErrors(async (req, res, next) => {
+ const userId = req.user.id;
+  
+ console.log(userId);
+
+
+ let user = await User.findByIdAndUpdate(userId, req.body, {
+  new: true,
+  runValidators: true,
+  useFindAndModify:false
+  });
+
+  res.status(200).json({
+    success: true,
+    user,
   });
 });

@@ -28,22 +28,26 @@ const CreateQuiz = () => {
 
   const handleuploadQuestions = (e) => {
     const file = e.target.files[0];
-    setQuestionFile(file); // Set the selected file
-    const isQuestion = true;
-    convertExcelToJson(file, isQuestion, (jsonData) => {
-      setCreate({ ...create, questions: jsonData });
-    });
-    
+    if (file) {
+      setQuestionFile(file); // Set the selected file
+      const isQuestion = true;
+      convertExcelToJson(file, isQuestion, (jsonData) => {
+        setCreate({ ...create, questions: jsonData });
+      });
+    }
   };
-
+  
   const handleEnrolledStudents = (e) => {
     const file = e.target.files[0];
-    setStudentsFile(file); // Set the selected file
-    const isQuestion = false;
-    convertExcelToJson(file, isQuestion, (jsonData) => {
-      setCreate({ ...create, enrolledStudents: jsonData });
-    });
+    if (file) {
+      setStudentsFile(file); // Set the selected file
+      const isQuestion = false;
+      convertExcelToJson(file, isQuestion, (jsonData) => {
+        setCreate({ ...create, enrolledStudents: jsonData });
+      });
+    }
   };
+  
 
   const convertExcelToJson = (file, isQuestion, callback) => {
     const reader = new FileReader();
@@ -69,14 +73,14 @@ const CreateQuiz = () => {
         callback(jsonData);
       }
     };
-
+  
     reader.onerror = (e) => {
       console.error("Error reading the file:", e);
     };
-
+  
     reader.readAsArrayBuffer(file);
   };
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({

@@ -4,6 +4,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    
     /* background-color: rgba(0, 0, 0, 0.2); */
   }
 
@@ -17,7 +18,7 @@
     padding: 7.5em 2.5em 4em 2.5em;
     color: var(--second-color);
     box-shadow: 0px 0px 10px 2px rgba(0, 0, 0, 0.2);
-    background-image: repeating-linear-gradient(26deg, rgb(255,255,255) 0px, rgb(255,255,255) 19px,transparent 19px, transparent 21px),repeating-linear-gradient(70deg, rgb(255,255,255) 0px, rgb(255,255,255) 19px,transparent 19px, transparent 21px),repeating-linear-gradient(10deg, rgb(255,255,255) 0px, rgb(255,255,255) 19px,transparent 19px, transparent 21px),linear-gradient(90deg, rgb(11, 212, 133),rgb(46, 137, 226));
+    background-image: linear-gradient(45deg, rgba(41, 41, 41, 0.02) 0%, rgba(41, 41, 41, 0.02) 31%,rgba(24, 24, 24, 0.02) 31%, rgba(24, 24, 24, 0.02) 100%),linear-gradient(45deg, rgba(183, 183, 183, 0.08) 0%, rgba(183, 183, 183, 0.08) 69%,rgba(25, 25, 25, 0.08) 69%, rgba(25, 25, 25, 0.08) 100%),linear-gradient(0deg, rgba(205, 205, 205, 0.06) 0%, rgba(205, 205, 205, 0.06) 52%,rgba(110, 110, 110, 0.06) 52%, rgba(110, 110, 110, 0.06) 100%),linear-gradient(45deg, rgba(87, 87, 87, 0.1) 0%, rgba(87, 87, 87, 0.1) 24%,rgba(229, 229, 229, 0.1) 24%, rgba(229, 229, 229, 0.1) 100%),linear-gradient(0deg, rgba(12, 12, 12, 0.03) 0%, rgba(12, 12, 12, 0.03) 39%,rgba(207, 207, 207, 0.03) 39%, rgba(207, 207, 207, 0.03) 100%),linear-gradient(135deg, rgba(174, 174, 174, 0.04) 0%, rgba(174, 174, 174, 0.04) 73%,rgba(134, 134, 134, 0.04) 73%, rgba(134, 134, 134, 0.04) 100%),linear-gradient(0deg, rgba(105, 105, 105, 0.06) 0%, rgba(105, 105, 105, 0.06) 8%,rgba(203, 203, 203, 0.06) 8%, rgba(203, 203, 203, 0.06) 100%),linear-gradient(90deg, rgb(134, 134, 134),rgb(231, 231, 231));
   }
 
   .quizCreate-header {
@@ -251,4 +252,9 @@
     background-color: #dddddd;
     color: #888888;
     cursor: not-allowed;
+  }
+
+  .EditQuizz{
+    /* background-color: black; */
+    width: 100%;
   }

@@ -59,7 +59,13 @@
     opacity: 1;
     color: #29fd;
   }
-  
+/*   
+  .navigation ul li.dactive a .icon{
+    transform: translateY(px);
+    opacity: 1;
+    
+  } */
+
   .indicator {
     position: absolute;
     top: 8px;
@@ -98,6 +104,7 @@
   .navigation ul li:nth-child(2).active ~ .indicator {
     transform: translateY(calc(78px * 1));
   }
+  
   .navigation ul li:nth-child(3).active ~ .indicator {
     transform: translateY(calc(78px * 2));
   }

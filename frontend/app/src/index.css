@@ -19,11 +19,27 @@ body {
 
 .master{
   display: grid;
-  grid-template-columns: 5.8% 92.2%;
+  grid-template-columns: 6% 94%;
   height: 100vh;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: #0d0d0d;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 50px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #009fff;
 }

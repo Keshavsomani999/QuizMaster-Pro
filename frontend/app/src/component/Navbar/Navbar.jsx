@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./Navbar.css";
 import {Link,useLocation, useNavigate} from 'react-router-dom'
 import { useDispatch } from 'react-redux';
@@ -8,6 +8,7 @@ const Navbar = () => {
   
   const location = useLocation();
   const word = location.pathname.substring(1);
+  const [activeIndex, setActiveIndex] = useState(0);
   const navigate = useNavigate(); 
   const dispatch = useDispatch();
 
@@ -16,11 +17,16 @@ const Navbar = () => {
   const items = [
     { icon: 'home-outline',link:'/home' },
     { icon: 'person-outline',link:'/account' },
-    { icon: 'create-outline',link:'/create' },
-    // { icon: 'camera-outline',link:'/camera' },
-    { icon: 'settings-outline',link:'/setting' },
+    // { icon: 'create-outline',link:'/edit/:quizId' },
+    { icon: 'camera-outline',link:'/camera' },
+    { icon: 'settings-outline',link:'/account' },
     // { icon: 'log-out',link:'logout' },
   ];
+
+  const handleClick = (index) => {
+    setActiveIndex(index);
+  };
+
 
   const logout = async() =>{
     
@@ -40,6 +46,8 @@ const Navbar = () => {
   }
     
   }
+
+
   return (
     <div className='navbody'>
       <div className="navigation">
@@ -48,8 +56,9 @@ const Navbar = () => {
             <li
 
               key={index}
-              className={`list ${item.link === '/' + word ? 'active' : ''}`}
-              
+         
+              className={`list ${activeIndex === index ? 'active' : ''}`}
+              onClick={() => handleClick(index)}
             >
               <Link to={item.link}>
                 <span className="icon">
